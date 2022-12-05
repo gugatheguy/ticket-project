@@ -1,0 +1,10 @@
+<div class="m-2">
+  <div (click)="changeSelect()" class="tooltip rounded-md w-full {{selected ? 'bg-slate-200' : 'bg-white'}} drop-shadow-md">
+    <div class="flex flex-wrap flex-row justify-between text-sm text-slate-400">
+      <p class="m-1">{{userName}}</p>
+      <p class="m-1">{{ticket.creationDate.toDateString()}}</p>
+    </div>
+    <a routerLink="/ticket/{{ticket.id}}"
+       class="m-1 text-lg text-indigo-500 break-all truncate h-fit-max">{{ticket.title}}</a>
+  </div>
+</div>

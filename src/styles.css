@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .overlay {
+    @apply bg-black/75 h-screen w-full fixed inset-0 z-10;
+  }
+  .modal{
+    @apply m-auto p-2 rounded-sm drop-shadow-md bg-white w-1/2 h-fit fixed inset-0 z-[11];
+  }
+  .dropdown{
+    @apply absolute bg-slate-50 w-fit h-fit rounded-sm;
+  }
+  .tooltip{
+    @apply relative inline-block;
+  }
+  .tooltip-text{
+    @apply invisible w-fit p-2 rounded-md text-white bg-slate-700 text-sm absolute z-20 left-5;
+  }
+
+  .tooltip:hover .tooltip-text{
+    @apply visible;
+  }
+}
