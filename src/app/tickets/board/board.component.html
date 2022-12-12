@@ -46,10 +46,9 @@
       </div>
     </form>
   </div>
-  <div class="h-screen my-2 flex flex-wrap flex-row gap-x-2 justify-center min-w-screen">
-    <div *ngFor="let column of columns" class=" rounded-md min-h-[90%] bg-stone-200 w-[23%]">
-      <app-board-column [status]="column" [columnTickets]="getColumn(column)">
-      </app-board-column>
+  <div class="my-2 flex flex-wrap flex-row gap-x-2 justify-center min-w-screen" cdkDropListGroup>
+    <div *ngFor="let column of columns" class="h-[34rem] rounded-md bg-stone-200 w-[75%] sm:w-[45%] md:w-[23%] lg:w-[22%] mb-2 overflow-scroll">
+      <app-board-column [status]="column" [columnTickets]="getColumn(column)"></app-board-column>
     </div>
   </div>
 </div>

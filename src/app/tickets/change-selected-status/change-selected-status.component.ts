@@ -52,8 +52,10 @@ export class ChangeSelectedStatusComponent implements OnInit {
    * @public
    */
   onSubmit(){
-    this.ticketsService.changeSelectedStatus(this.statusForm.value['newStatus'])
-    this.done.emit()
-    this.statusForm.reset('newStatus')
+    if(this.statusForm.valid){
+      this.ticketsService.changeSelectedStatus(this.statusForm.value['newStatus'])
+      this.done.emit()
+      this.statusForm.reset('newStatus')
+    }
   }
 }

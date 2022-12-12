@@ -41,7 +41,8 @@ export class TicketsService{
    */
   private getStorage(){
     let ticketList : Ticket[] = JSON.parse(localStorage.getItem('tickets') || '[]')
-    this.totalTickets = Math.max(...(ticketList.map(ticket => ticket.id)))+1
+    if(ticketList.length > 0)
+      this.totalTickets = Math.max(...(ticketList.map(ticket => ticket.id)))+1
     ticketList.map(ticket => {
       let ticketWithDate = ticket
       ticketWithDate.creationDate = new Date(ticketWithDate.creationDate)
@@ -127,6 +128,24 @@ export class TicketsService{
       this.ticketsChanged.next(this.getTickets())
       this.setStorage()
       this.setAlert("The ticket was edited.")
+    }
+  }
+
+  /**
+   * Updates a ticket status.
+   *
+   * @public
+   * @param id          The ticket's id.
+   * @param status      The ticket's status.
+   */
+  public updateTicketStatus(id: number, status: string){
+    let ticket = this.tickets.get(id);
+    if(ticket){
+      ticket.status = status
+      ticket.editDate = new Date();
+      this.tickets.set(id,ticket)
+      this.ticketsChanged.next(this.getTickets())
+      this.setStorage()
     }
   }
 

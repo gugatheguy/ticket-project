@@ -4,6 +4,7 @@ import {Ticket} from "../ticket.model";
 import {FormControl, FormGroup} from "@angular/forms";
 import {User} from "../user.model";
 import {UsersService} from "../users.service";
+import {CdkDragDrop} from "@angular/cdk/drag-drop";
 
 /**
  * Component responsible to create the initial board.
@@ -185,10 +186,20 @@ export class BoardComponent implements OnInit, OnDestroy {
     return []
   }
 
+  /**
+   * Changes the dropdown status.
+   *
+   * @public
+   */
   changeDropdownStatus(){
     this.dropdownActive = !this.dropdownActive
   }
 
+  /**
+   * Closes the alert window.
+   *
+   * @public
+   */
   closeAlert(){
     this.hasAlert = false;
     this.alertMsg = '';

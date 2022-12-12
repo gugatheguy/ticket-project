@@ -16,6 +16,7 @@ import { CreateUserComponent } from './tickets/create-user/create-user.component
 import { ChangeSelectedStatusComponent } from './tickets/change-selected-status/change-selected-status.component';
 import { DeleteSelectedComponent } from './tickets/delete-selected/delete-selected.component';
 import { ChangeSelectedUserComponent } from './tickets/change-selected-user/change-selected-user.component';
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ChangeSelectedUserComponent } from './tickets/change-selected-user/chan
     AppRoutingModule,
     BrowserModule,
     ReactiveFormsModule,
-    CreateUserComponent
+    CreateUserComponent,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

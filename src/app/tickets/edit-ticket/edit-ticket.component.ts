@@ -95,13 +95,15 @@ export class EditTicketComponent implements OnInit {
    * @public
    */
   onEdit(){
-    this.ticketsService.updateTicket(
-      this.id,
-      this.ticketForm.value['title'],
-      this.ticketForm.value['description'],
-      +this.ticketForm.value['user'],
-      this.ticketForm.value['status'])
-    this.router.navigate(['/board'])
+    if(this.ticketForm.valid) {
+      this.ticketsService.updateTicket(
+        this.id,
+        this.ticketForm.value['title'],
+        this.ticketForm.value['description'],
+        +this.ticketForm.value['user'],
+        this.ticketForm.value['status'])
+      this.router.navigate(['/board'])
+    }
   }
 
   getUserName(id: number){

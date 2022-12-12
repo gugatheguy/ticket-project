@@ -30,7 +30,8 @@ export class UsersService{
    */
   private getStorage(){
     let userList : User[] = JSON.parse(localStorage.getItem('users') || '[]')
-    this.totalUsers = Math.max(...(userList.map(user => user.id))) + 1
+    if(userList.length > 0)
+      this.totalUsers = Math.max(...(userList.map(user => user.id))) + 1
     userList.map(user => {
       this.users.set(user.id,user)
     })

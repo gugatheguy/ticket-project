@@ -7,8 +7,8 @@
       <option *ngFor="let user of users" value="{{user.id}}">{{user.name}}</option>
   </select>
   <button type="submit"
-          [disabled]="ola"
-          class="mb-4 text-white rounded-lg px-2 py-2 mr-4 {{!ola ? 'bg-indigo-400 hover:bg-indigo-500' : 'bg-slate-400 hover:cursor-not-allowed'}}">
+          [disabled]="!userForm.valid"
+          class="mb-4 text-white rounded-lg px-2 py-2 mr-4 {{userForm.valid ? 'bg-indigo-400 hover:bg-indigo-500' : 'bg-slate-400 hover:cursor-not-allowed'}}">
     Change User
   </button>
 </form>

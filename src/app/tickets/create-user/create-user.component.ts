@@ -51,8 +51,10 @@ export class CreateUserComponent implements OnInit {
    * @public
    */
   onSubmit(){
-    this.usersService.addUser(this.userForm.value['newUser'])
-    this.done.emit()
-    this.userForm.reset('newUser')
+    if(this.userForm.valid){
+      this.usersService.addUser(this.userForm.value['newUser'])
+      this.done.emit()
+      this.userForm.reset('newUser')
+    }
   }
 }

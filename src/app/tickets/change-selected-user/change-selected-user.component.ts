@@ -20,7 +20,6 @@ export class ChangeSelectedUserComponent implements OnInit {
   /** The event emitter to signalize when the user changes. */
   @Output() done = new EventEmitter();
 
-  public ola = true
 
   /**
    * Class constructor
@@ -48,7 +47,7 @@ export class ChangeSelectedUserComponent implements OnInit {
    */
   initForm(){
     this.userForm = new FormGroup({
-      'newUser' : new FormControl( Validators.required)
+      'newUser' : new FormControl(null, Validators.required)
     })
   }
 
@@ -58,9 +57,11 @@ export class ChangeSelectedUserComponent implements OnInit {
    * @public
    */
   onSubmit(){
-    this.ticketsService.changeSelectedUser(+this.userForm.value['newUser'])
-    this.done.emit()
-    this.userForm.reset('newUser')
+    if(this.userForm.valid){
+      this.ticketsService.changeSelectedUser(+this.userForm.value['newUser'])
+      this.done.emit()
+      this.userForm.reset('newUser')
+    }
   }
 
 }

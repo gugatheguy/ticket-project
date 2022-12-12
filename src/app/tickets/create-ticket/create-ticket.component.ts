@@ -22,7 +22,7 @@ interface TicketForm {
 export class CreateTicketComponent implements OnInit {
 
   /** The ticket form. */
-  ticketForm: FormGroup;
+  ticketForm: FormGroup<TicketForm>;
   /** The users list. */
   public users: User[];
   /** The creating user variable. */
@@ -69,12 +69,16 @@ export class CreateTicketComponent implements OnInit {
    * @public
    */
   onSubmit(){
-    this.ticketsService.addTicket(
-      this.ticketForm.value['title'],
-      this.ticketForm.value['description'],
-      this.ticketForm.value['user'],
-      'Backlog')
-    this.router.navigate(['/board'])
+    if(this.ticketForm.value.title
+      && this.ticketForm.value.description
+      && this.ticketForm.value.user){
+      this.ticketsService.addTicket(
+        this.ticketForm.value.title,
+        this.ticketForm.value.description,
+        +this.ticketForm.value.user,
+        'Backlog')
+      this.router.navigate(['/board'])
+    }
   }
 
   /**
